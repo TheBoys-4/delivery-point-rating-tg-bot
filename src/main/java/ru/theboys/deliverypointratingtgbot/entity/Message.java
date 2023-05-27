@@ -1,13 +1,11 @@
-package ru.theboys.deliverypointtgbot.entity;
+package ru.theboys.deliverypointratingtgbot.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.theboys.deliverypointtgbot.enums.MessageSource;
+import ru.theboys.deliverypointratingtgbot.enums.MessageSource;
 
 import java.util.Date;
 

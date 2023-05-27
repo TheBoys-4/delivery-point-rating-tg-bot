@@ -1,12 +1,12 @@
-package ru.theboys.deliverypointtgbot.service;
+package ru.theboys.deliverypointratingtgbot.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.theboys.deliverypointtgbot.entity.UserBotStatus;
-import ru.theboys.deliverypointtgbot.enums.BotState;
-import ru.theboys.deliverypointtgbot.repository.UserBotStatusRepository;
+import ru.theboys.deliverypointratingtgbot.entity.UserBotStatus;
+import ru.theboys.deliverypointratingtgbot.enums.BotState;
+import ru.theboys.deliverypointratingtgbot.repository.UserBotStatusRepository;
 
 import java.util.List;
 

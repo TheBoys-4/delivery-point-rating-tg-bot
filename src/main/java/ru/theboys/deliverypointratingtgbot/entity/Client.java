@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointtgbot.entity;
+package ru.theboys.deliverypointratingtgbot.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,14 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Vendor extends BaseModel {
-
+public class Client {
     private String name;
 
+    private String phoneNumber;
+
+    private String email;
+
+    private String sex;
+
+    private int age;
 }

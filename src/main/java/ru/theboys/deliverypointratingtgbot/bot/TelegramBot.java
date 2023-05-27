@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointtgbot.bot;
+package ru.theboys.deliverypointratingtgbot.bot;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -13,15 +13,15 @@ import org.telegram.telegrambots.meta.api.objects.commands.scope.BotCommandScope
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ru.theboys.deliverypointtgbot.config.BotConfig;
-import ru.theboys.deliverypointtgbot.constants.CallBackDataConstants;
-import ru.theboys.deliverypointtgbot.constants.NameConstants;
-import ru.theboys.deliverypointtgbot.constants.TextConstants;
-import ru.theboys.deliverypointtgbot.entity.Message;
-import ru.theboys.deliverypointtgbot.entity.UserBotStatus;
-import ru.theboys.deliverypointtgbot.enums.BotState;
-import ru.theboys.deliverypointtgbot.enums.MessageSource;
-import ru.theboys.deliverypointtgbot.service.TgBotService;
+import ru.theboys.deliverypointratingtgbot.config.BotConfig;
+import ru.theboys.deliverypointratingtgbot.constants.CallBackDataConstants;
+import ru.theboys.deliverypointratingtgbot.constants.NameConstants;
+import ru.theboys.deliverypointratingtgbot.constants.TextConstants;
+import ru.theboys.deliverypointratingtgbot.entity.Message;
+import ru.theboys.deliverypointratingtgbot.entity.UserBotStatus;
+import ru.theboys.deliverypointratingtgbot.enums.BotState;
+import ru.theboys.deliverypointratingtgbot.enums.MessageSource;
+import ru.theboys.deliverypointratingtgbot.service.TgBotService;
 
 import java.sql.Date;
 import java.time.LocalDate;

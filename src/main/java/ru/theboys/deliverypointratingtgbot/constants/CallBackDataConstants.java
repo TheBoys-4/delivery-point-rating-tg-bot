@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointtgbot.constants;
+package ru.theboys.deliverypointratingtgbot.constants;
 
 public class CallBackDataConstants {
 

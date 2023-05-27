@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointtgbot.entity;
+package ru.theboys.deliverypointratingtgbot.entity;
 
 import java.io.Serializable;
 

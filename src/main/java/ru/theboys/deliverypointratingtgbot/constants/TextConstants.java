@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointtgbot.constants;
+package ru.theboys.deliverypointratingtgbot.constants;
 
 import javax.xml.transform.sax.SAXResult;
 

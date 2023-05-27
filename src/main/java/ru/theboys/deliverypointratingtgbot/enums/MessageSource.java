@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointtgbot.enums;
+package ru.theboys.deliverypointratingtgbot.enums;
 
 public enum MessageSource {
     TEST,

@@ -1,11 +1,9 @@
-package ru.theboys.deliverypointtgbot.repository;
+package ru.theboys.deliverypointratingtgbot.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import ru.theboys.deliverypointtgbot.entity.UserBotStatus;
-
-import java.util.List;
+import ru.theboys.deliverypointratingtgbot.entity.UserBotStatus;
 
 @Repository
 public interface UserBotStatusRepository extends JpaRepository<UserBotStatus,String> {

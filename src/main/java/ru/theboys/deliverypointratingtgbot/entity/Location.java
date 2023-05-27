@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointtgbot.entity;
+package ru.theboys.deliverypointratingtgbot.entity;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.theboys.deliverypointtgbot.enums.LocationType;
+import ru.theboys.deliverypointratingtgbot.enums.LocationType;
 
 @Getter
 @Setter
