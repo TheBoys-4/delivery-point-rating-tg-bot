@@ -6,13 +6,13 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>ru.theboys</groupId>
-    <artifactId>delivery-point-tg-bot</artifactId>
+    <artifactId>delivery-point-rating-tg-bot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>delivery-point-tg-bot</name>
-    <description>delivery-point-tg-bot</description>
+    <name>delivery-point-rating-tg-bot</name>
+    <description>delivery-point-rating-tg-bot</description>
 
     <properties>
         <java.version>17</java.version>
