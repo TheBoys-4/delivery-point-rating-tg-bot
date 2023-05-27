@@ -7,4 +7,5 @@ public class TextConstants {
     public static final String GIVE_ORDER_ID_MESSAGE = "Введите номер заказа";
     public static final String GIVE_COMMENT_MESSAGE = "Напишите ваш комментарий";
     public static final String ERROR_MESSAGE = "Something wrong";
+    public static final String GIVE_SCORE_MESSAGE = "Выберите оценку заказа";
 }

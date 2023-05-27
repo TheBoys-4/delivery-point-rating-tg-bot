@@ -51,6 +51,11 @@ public class TgBotService {
         addUserBot(userBotStatus);
     }
 
+    public void updateUserBotStatus(String chatId, UserBotStatus userBotStatus) {
+        UserBotStatus userBotStatusFromDB = this.userBotStatusRepository.getUserBotStatusByChatId(chatId);
+        BeanUtils.copyProperties(userBotStatus, userBotStatusFromDB,"id");
+        addUserBot(userBotStatus);
+    }
 
 
 }

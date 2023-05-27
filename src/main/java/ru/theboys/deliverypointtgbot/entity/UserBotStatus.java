@@ -28,4 +28,9 @@ public class UserBotStatus implements Serializable {
     @Column(name = "last_bot_state", columnDefinition = "SMALLINT DEFAULT NULL")
     private BotState lastBotState;
 
+    @Column(name = "last_order_id")
+    private String lastOrderId;
+
+    @Column(name = "last_score")
+    private int lastScore;
 }

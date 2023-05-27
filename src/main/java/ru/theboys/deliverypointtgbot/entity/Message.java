@@ -1,6 +1,8 @@
 package ru.theboys.deliverypointtgbot.entity;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +10,8 @@ import lombok.Setter;
 import ru.theboys.deliverypointtgbot.enums.MessageSource;
 
 import java.util.Date;
+
+
 
 @Getter
 @Setter
