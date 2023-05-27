@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DeliveryPointTgBotApplication {
+public class DeliveryPointRatingTgBotApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DeliveryPointTgBotApplication.class, args);
+        SpringApplication.run(DeliveryPointRatingTgBotApplication.class, args);
     }
 
 }
