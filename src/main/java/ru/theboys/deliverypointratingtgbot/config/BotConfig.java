@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointtgbot.config;
+package ru.theboys.deliverypointratingtgbot.config;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;

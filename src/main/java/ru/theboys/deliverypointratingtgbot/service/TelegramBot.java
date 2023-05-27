@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointtgbot.service;
+package ru.theboys.deliverypointratingtgbot.service;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,7 @@ import org.telegram.telegrambots.meta.api.objects.commands.scope.BotCommandScope
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ru.theboys.deliverypointtgbot.config.BotConfig;
+import ru.theboys.deliverypointratingtgbot.config.BotConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +28,10 @@ public class TelegramBot extends TelegramLongPollingBot {
         List<BotCommand> listOfCommands = new ArrayList<>();
         listOfCommands.add(new BotCommand("/start", "start"));
         listOfCommands.add(new BotCommand("/aboutme", "about me"));
-        try{
-            this.execute(new SetMyCommands(listOfCommands, new BotCommandScopeDefault(),null));
-        }
-        catch (TelegramApiException e){
-            log.error("error menu list"+e.getMessage());
+        try {
+            this.execute(new SetMyCommands(listOfCommands, new BotCommandScopeDefault(), null));
+        } catch (TelegramApiException e) {
+            log.error("error menu list" + e.getMessage());
         }
     }
 
@@ -50,7 +49,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
 
-        if(update.hasMessage()&&update.getMessage().hasText()) {
+        if (update.hasMessage() && update.getMessage().hasText()) {
             String messageText = update.getMessage().getText();
             long chatId = update.getMessage().getChatId();
 
@@ -66,16 +65,13 @@ public class TelegramBot extends TelegramLongPollingBot {
                 default:
                     sendMessage(chatId, "Sorry)");
             }
-        }
-        else if(update.hasCallbackQuery()){
+        } else if (update.hasCallbackQuery()) {
             String callbackData = update.getCallbackQuery().getData();
             long chatId = update.getCallbackQuery().getMessage().getChatId();
-            if(callbackData.equals("aboutMeText")){
-                sendMessage(chatId,"aboutMeText");
+            if (callbackData.equals("aboutMeText")) {
+                sendMessage(chatId, "aboutMeText");
                 viewAboutMeMenu(chatId);
-            }
-
-            else if(callbackData.equals("aboutMeText")){
+            } else if (callbackData.equals("aboutMeText")) {
                 sendMessage(chatId, "aboutMeText");
                 viewAboutMeMenu(chatId);
             }
@@ -83,9 +79,10 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     }
 
-    private void srartCommandReceived(long chatId){
+    private void srartCommandReceived(long chatId) {
         sendMessage(chatId, "aboutMeText");
     }
+
     private void viewAboutMeMenu(long chatId) {
         SendMessage message = new SendMessage();
         message.setChatId(String.valueOf(chatId));
@@ -121,19 +118,18 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
 
-    private void sendMessage(long chatId, String textToSend){
+    private void sendMessage(long chatId, String textToSend) {
         SendMessage message = new SendMessage();
         message.setChatId(String.valueOf(chatId));
         message.setText(textToSend);
         executeMessage(message);
     }
 
-    private void executeMessage(SendMessage message){
-        try{
+    private void executeMessage(SendMessage message) {
+        try {
             execute(message);
-        }
-        catch (TelegramApiException e) {
-            log.error("Error occured: "+e.getMessage());
+        } catch (TelegramApiException e) {
+            log.error("Error occured: " + e.getMessage());
         }
     }
 
