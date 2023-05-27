@@ -1,4 +1,4 @@
-package ru.theboys.deliverypointtgbot;
+package ru.theboys.deliverypointratingtgbot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
