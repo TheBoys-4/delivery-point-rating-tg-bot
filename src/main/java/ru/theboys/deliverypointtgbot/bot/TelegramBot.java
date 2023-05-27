@@ -19,8 +19,8 @@ import ru.theboys.deliverypointtgbot.constants.NameConstants;
 import ru.theboys.deliverypointtgbot.constants.TextConstants;
 import ru.theboys.deliverypointtgbot.entity.Message;
 import ru.theboys.deliverypointtgbot.entity.UserBotStatus;
-import ru.theboys.deliverypointtgbot.entity.Vendor;
 import ru.theboys.deliverypointtgbot.enums.BotState;
+import ru.theboys.deliverypointtgbot.enums.MessageSource;
 import ru.theboys.deliverypointtgbot.service.TgBotService;
 
 import java.sql.Date;
@@ -89,13 +89,24 @@ public class TelegramBot extends TelegramLongPollingBot {
                     viewChooseScoreMenu(chatId);
 
                 } else if (this.telegramBotService.getUserBotStatusByChatId(String.valueOf(chatId)).getLastBotState() == BotState.COMMENT_WAIT_COMMENT) {
-
+                    UserBotStatus userBotStatus = this.telegramBotService.getUserBotStatusByChatId(String.valueOf(chatId));
+                    Message message = new Message(Date.valueOf(LocalDate.now()), userBotStatus.getLastScore(), null,
+                            null, null, MessageSource.TELEGRAM_BOT, messageText);
+                    //TODO
+                    sendMessage(chatId, "Успешно");
+                    viewStartMenu(chatId);
+                } else if (this.telegramBotService.getUserBotStatusByChatId(String.valueOf(chatId)).getLastBotState() == BotState.COMMENT_WAIT_COMMENT) {
+                    sendMessage(chatId, TextConstants.ERROR_MESSAGE);
                 }
+            } else {
+                sendMessage(chatId, TextConstants.ERROR_MESSAGE);
             }
         } else if (update.hasCallbackQuery()) {
             String callbackData = update.getCallbackQuery().getData();
             long chatId = update.getCallbackQuery().getMessage().getChatId();
-            if (callbackData.equals(CallBackDataConstants.ABOUT_ME_BUTTON)) {
+            if (this.telegramBotService.getUserBotStatusByChatId(String.valueOf(chatId)) == null) {
+                sendMessage(chatId, TextConstants.ERROR_MESSAGE_NULL_STATE_FROM_DB);
+            } else if (callbackData.equals(CallBackDataConstants.ABOUT_ME_BUTTON)) {
                 sendMessage(chatId, TextConstants.ABOUT_ME_MESSAGE);
                 viewStartMenu(chatId);
             } else if (callbackData.equals(CallBackDataConstants.COMMENT_BUTTON)) {
@@ -113,26 +124,31 @@ public class TelegramBot extends TelegramLongPollingBot {
                 userBotStatus.setLastBotState(BotState.COMMENT_WAIT_COMMENT);
                 userBotStatus.setLastScore(1);
                 this.telegramBotService.addUserBot(userBotStatus);
+                sendMessage(chatId, TextConstants.GIVE_COMMENT_MESSAGE);
             } else if (callbackData.equals(CallBackDataConstants.SCORE2)) {
                 UserBotStatus userBotStatus = this.telegramBotService.getUserBotStatusByChatId(String.valueOf(chatId));
                 userBotStatus.setLastBotState(BotState.COMMENT_WAIT_COMMENT);
                 userBotStatus.setLastScore(2);
                 this.telegramBotService.addUserBot(userBotStatus);
+                sendMessage(chatId, TextConstants.GIVE_COMMENT_MESSAGE);
             } else if (callbackData.equals(CallBackDataConstants.SCORE3)) {
                 UserBotStatus userBotStatus = this.telegramBotService.getUserBotStatusByChatId(String.valueOf(chatId));
                 userBotStatus.setLastBotState(BotState.COMMENT_WAIT_COMMENT);
                 userBotStatus.setLastScore(3);
                 this.telegramBotService.addUserBot(userBotStatus);
+                sendMessage(chatId, TextConstants.GIVE_COMMENT_MESSAGE);
             } else if (callbackData.equals(CallBackDataConstants.SCORE4)) {
                 UserBotStatus userBotStatus = this.telegramBotService.getUserBotStatusByChatId(String.valueOf(chatId));
                 userBotStatus.setLastBotState(BotState.COMMENT_WAIT_COMMENT);
                 userBotStatus.setLastScore(4);
                 this.telegramBotService.addUserBot(userBotStatus);
+                sendMessage(chatId, TextConstants.GIVE_COMMENT_MESSAGE);
             } else if (callbackData.equals(CallBackDataConstants.SCORE5)) {
                 UserBotStatus userBotStatus = this.telegramBotService.getUserBotStatusByChatId(String.valueOf(chatId));
-                userBotStatus.setLastBotState(BotState.COMMENT_WAIT_COMMENT);
+//                userBotStatus.setLastBotState(BotState.COMMENT_WAIT_COMMENT);
                 userBotStatus.setLastScore(5);
                 this.telegramBotService.addUserBot(userBotStatus);
+                sendMessage(chatId, TextConstants.GIVE_COMMENT_MESSAGE);
             }
         }
 
@@ -157,20 +173,20 @@ public class TelegramBot extends TelegramLongPollingBot {
         score1Button.setCallbackData(CallBackDataConstants.SCORE1);
 
         var score2Button = new InlineKeyboardButton();
-        score1Button.setText(NameConstants.SCORE2);
-        score1Button.setCallbackData(CallBackDataConstants.SCORE2);
+        score2Button.setText(NameConstants.SCORE2);
+        score2Button.setCallbackData(CallBackDataConstants.SCORE2);
 
         var score3Button = new InlineKeyboardButton();
-        score1Button.setText(NameConstants.SCORE3);
-        score1Button.setCallbackData(CallBackDataConstants.SCORE3);
+        score3Button.setText(NameConstants.SCORE3);
+        score3Button.setCallbackData(CallBackDataConstants.SCORE3);
 
         var score4Button = new InlineKeyboardButton();
-        score1Button.setText(NameConstants.SCORE4);
-        score1Button.setCallbackData(CallBackDataConstants.SCORE4);
+        score4Button.setText(NameConstants.SCORE4);
+        score4Button.setCallbackData(CallBackDataConstants.SCORE4);
 
         var score5Button = new InlineKeyboardButton();
-        score1Button.setText(NameConstants.SCORE5);
-        score1Button.setCallbackData(CallBackDataConstants.SCORE5);
+        score5Button.setText(NameConstants.SCORE5);
+        score5Button.setCallbackData(CallBackDataConstants.SCORE5);
 
 
         rowInLine1.add(score1Button);

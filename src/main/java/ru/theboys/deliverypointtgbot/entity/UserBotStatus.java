@@ -18,19 +18,19 @@ import java.io.Serializable;
 public class UserBotStatus implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     @Column(name = "chat_id", unique = true, nullable = false, length = 255)
     private String chatId;
 
-    @Enumerated
-    @Column(name = "last_bot_state", columnDefinition = "SMALLINT DEFAULT NULL")
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "last_bot_state")
     private BotState lastBotState;
 
     @Column(name = "last_order_id")
     private String lastOrderId;
 
     @Column(name = "last_score")
-    private int lastScore;
+    private Integer lastScore;
 }
