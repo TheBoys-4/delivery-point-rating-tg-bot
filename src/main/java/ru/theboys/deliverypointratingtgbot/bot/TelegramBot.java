@@ -3,7 +3,9 @@ package ru.theboys.deliverypointratingtgbot.bot;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -91,8 +93,16 @@ public class TelegramBot extends TelegramLongPollingBot {
                 } else if (this.telegramBotService.getUserBotStatusByChatId(String.valueOf(chatId)).getLastBotState() == BotState.COMMENT_WAIT_COMMENT) {
                     UserBotStatus userBotStatus = this.telegramBotService.getUserBotStatusByChatId(String.valueOf(chatId));
                     Message message = new Message(Date.valueOf(LocalDate.now()), userBotStatus.getLastScore(), null,
-                            null, null, MessageSource.TELEGRAM_BOT, messageText);
-                    //TODO
+                            null, null, "TG_BOT", messageText);
+
+                    RestTemplate restTemplate = new RestTemplate();
+                    String resourceUrl = "http://87.242.124.151:8080/api/delivery-point-rating/data-service/messages";
+                    HttpEntity<Message> request = new HttpEntity<>(message);
+                    String response =  restTemplate.postForEntity(resourceUrl,request,String.class).toString();
+
+
+
+
                     sendMessage(chatId, "Успешно");
                     viewStartMenu(chatId);
                 } else if (this.telegramBotService.getUserBotStatusByChatId(String.valueOf(chatId)).getLastBotState() == BotState.COMMENT_WAIT_COMMENT) {

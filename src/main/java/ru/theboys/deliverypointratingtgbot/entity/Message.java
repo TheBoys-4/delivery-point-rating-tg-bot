@@ -29,7 +29,7 @@ public class Message extends BaseModel {
 
     private Client client;
 
-    private MessageSource messageSource;
+    private String messageSource;
 
     private String text;
 }
